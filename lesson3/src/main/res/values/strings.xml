@@ -21,4 +21,9 @@
     <string name="mask_desc">Gradient Mask</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movies_list">Movies list</string>
+    <string name="target_image_desc">Target image</string>
+    <string name="movie_name_line">Avengers: End Game</string>
+    <string name="like_image">Like image</string>
+    <string name="movie_duration">137 MIN</string>
 </resources>
