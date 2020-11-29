@@ -1,2 +1,4 @@
-include ':app'
+include ':mylibrary'
+include ':lesson3'
+include ':lesson2'
 rootProject.name = "Evo App"

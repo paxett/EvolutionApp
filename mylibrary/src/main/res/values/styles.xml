@@ -1,0 +1,92 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Header1Text">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textFontWeight">900</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:lineHeight">40sp</item>
+    </style>
+
+    <style name="Header2Text">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textFontWeight">900</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Header3Text">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textFontWeight">900</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Header4Text">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textFontWeight">900</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Header5Text">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textFontWeight">900</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Header6Text">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textFontWeight">900</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="MainText">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textFontWeight">300</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+    </style>
+
+    <style name="SmallText">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textFontWeight">300</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="RedText">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textFontWeight">300</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SmallRedText">
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textFontWeight">300</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+</resources>
