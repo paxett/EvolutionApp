@@ -8,10 +8,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .add(R.id.parent_fragment, MoviesList())
-                .commit()
-        }
+// Use NavController instead of Fragment Manager
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.beginTransaction()
+//                .add(R.id.parent_fragment, MoviesList())
+//                .commit()
+//        }
     }
 }
