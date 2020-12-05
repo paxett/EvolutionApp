@@ -5,7 +5,7 @@ data class Movie(
     val poster : String,
     val genres: String,
     val reviews_counter : String,
-    val rating : Byte,
+    val rating : String,
     val duration: String,
     val age : String,
     val like : Boolean
