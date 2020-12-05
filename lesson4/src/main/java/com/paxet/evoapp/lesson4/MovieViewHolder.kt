@@ -18,7 +18,6 @@ class MovieViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val ratingBar : RatingBar = itemView.findViewById(R.id.ratingBar)
 
     fun bind(movie : Movie) {
-        //loadImageAsync(movie.poster, poster)
         poster.setImageResource(movie.poster)
         name.text = movie.name
         genres.text = movie.genres

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class MoviesAdapter(
-    context : Context?,
+    context : Context,
     var movies : List<Movie>
 ) : RecyclerView.Adapter<MovieViewHolder>() {
     private val inflater : LayoutInflater = LayoutInflater.from(context)
