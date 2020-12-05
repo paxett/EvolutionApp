@@ -15,7 +15,7 @@
         tools:context=".MovieDetailsActivity">
 
         <ImageView
-            android:id="@+id/poster"
+            android:id="@+id/bw_poster"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:contentDescription="@string/poster_desc"
@@ -48,9 +48,9 @@
             android:layout_marginStart="8dp"
             android:text="@string/movie_name"
             style="@style/Header1Text"
-            app:layout_constraintBottom_toBottomOf="@id/poster"
+            app:layout_constraintBottom_toBottomOf="@id/bw_poster"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/poster" />
+            app:layout_constraintTop_toBottomOf="@+id/bw_poster" />
 
         <TextView
             android:id="@+id/genres"
@@ -189,7 +189,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cast"
             app:layout_goneMarginEnd="16dp"
             app:layout_goneMarginStart="16dp"
-            app:srcCompat="@drawable/mark_rufфдщ" />
+            app:srcCompat="@drawable/mark_ruffalo" />
 
         <ImageView
             android:id="@+id/face4"
@@ -284,7 +284,7 @@
             android:padding="8dp"
             app:layout_constraintDimensionRatio=""
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/poster"
+            app:layout_constraintTop_toTopOf="@+id/bw_poster"
             app:srcCompat="@drawable/back_arrow" />
 
 

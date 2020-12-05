@@ -12,7 +12,7 @@
 
 
         <ImageView
-            android:id="@+id/poster"
+            android:id="@+id/color_poster"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -29,9 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/poster"
-            app:layout_constraintStart_toStartOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/poster"
+            app:layout_constraintEnd_toEndOf="@+id/color_poster"
+            app:layout_constraintStart_toStartOf="@+id/color_poster"
+            app:layout_constraintTop_toTopOf="@+id/color_poster"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/bg_mask"/>
 
@@ -47,8 +47,8 @@
             android:background="@drawable/rect_rounded"
             android:padding="4dp"
             android:text="@string/age_constraint"
-            app:layout_constraintStart_toStartOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/poster" />
+            app:layout_constraintStart_toStartOf="@+id/color_poster"
+            app:layout_constraintTop_toTopOf="@+id/color_poster" />
 
         <TextView
             android:id="@+id/genres"
@@ -59,7 +59,7 @@
             android:padding="2dp"
             android:text="@string/genres"
             app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-            app:layout_constraintStart_toStartOf="@+id/poster" />
+            app:layout_constraintStart_toStartOf="@+id/color_poster" />
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -74,11 +74,11 @@
             android:progressTint="@color/red"
             android:rating="3"
             android:stepSize="1"
-            app:layout_constraintBottom_toBottomOf="@+id/poster"
-            app:layout_constraintStart_toStartOf="@+id/poster" />
+            app:layout_constraintBottom_toBottomOf="@+id/color_poster"
+            app:layout_constraintStart_toStartOf="@+id/color_poster" />
 
         <TextView
-            android:id="@+id/header"
+            android:id="@+id/movie_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -89,7 +89,7 @@
             app:layout_constraintStart_toStartOf="@+id/bg" />
 
         <TextView
-            android:id="@+id/counter"
+            android:id="@+id/reviews_counter"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="0dp"
@@ -103,18 +103,29 @@
             app:layout_constraintTop_toTopOf="@+id/ratingBar" />
 
         <ImageView
-            android:id="@+id/like"
+            android:id="@+id/like_disabled"
             android:contentDescription="@string/like_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:src="@drawable/like_disabled"
             app:layout_constraintBottom_toBottomOf="@+id/age"
-            app:layout_constraintEnd_toEndOf="@+id/poster"
+            app:layout_constraintEnd_toEndOf="@+id/color_poster"
+            app:layout_constraintTop_toTopOf="@+id/age" />
+
+        <ImageView
+            android:id="@+id/like_enabled"
+            android:contentDescription="@string/like_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/like_enabled"
+            app:layout_constraintBottom_toBottomOf="@+id/age"
+            app:layout_constraintEnd_toEndOf="@+id/color_poster"
             app:layout_constraintTop_toTopOf="@+id/age" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/duration"
             style="@style/Header6Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
