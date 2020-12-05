@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/poster"/>
+            app:srcCompat="@drawable/bw_poster_avengers_end_game"/>
 
         <ImageView
             android:id="@+id/mask"
@@ -38,7 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/mask" />
+            app:srcCompat="@drawable/gradient_mask" />
 
         <TextView
             android:id="@+id/name"
@@ -159,7 +159,7 @@
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cast"
-            app:srcCompat="@drawable/rdj" />
+            app:srcCompat="@drawable/robert_downey_jr" />
 
         <ImageView
             android:id="@+id/face2"
@@ -174,7 +174,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cast"
             app:layout_goneMarginEnd="16dp"
             app:layout_goneMarginStart="16dp"
-            app:srcCompat="@drawable/ce" />
+            app:srcCompat="@drawable/chris_evans" />
 
         <ImageView
             android:id="@+id/face3"
@@ -189,7 +189,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cast"
             app:layout_goneMarginEnd="16dp"
             app:layout_goneMarginStart="16dp"
-            app:srcCompat="@drawable/mr" />
+            app:srcCompat="@drawable/mark_rufфдщ" />
 
         <ImageView
             android:id="@+id/face4"
@@ -205,7 +205,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cast"
             app:layout_goneMarginEnd="16dp"
             app:layout_goneMarginStart="16dp"
-            app:srcCompat="@drawable/ch" />
+            app:srcCompat="@drawable/chris_hemsworth" />
 
         <TextView
             android:id="@+id/actor1"
@@ -285,7 +285,7 @@
             app:layout_constraintDimensionRatio=""
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/poster"
-            app:srcCompat="@drawable/back" />
+            app:srcCompat="@drawable/back_arrow" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
