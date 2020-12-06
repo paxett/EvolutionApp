@@ -8,5 +8,5 @@ data class Movie(
     val rating : Float,
     val duration: String,
     val age : String,
-    val like : Boolean
+    var like : Boolean
 )

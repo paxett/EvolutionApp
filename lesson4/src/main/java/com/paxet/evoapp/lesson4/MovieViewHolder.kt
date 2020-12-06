@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MovieViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-    private val poster : ImageView = itemView.findViewById(R.id.color_poster)
-    private val like_enabled : ImageView = itemView.findViewById(R.id.like_enabled)
-    private val like_disabled : ImageView = itemView.findViewById(R.id.like_disabled)
-    private val name : TextView = itemView.findViewById(R.id.movie_name)
+    val poster : ImageView = itemView.findViewById(R.id.color_poster)
+    val like_enabled : ImageView = itemView.findViewById(R.id.like_enabled)
+    val like_disabled : ImageView = itemView.findViewById(R.id.like_disabled)
+    val name : TextView = itemView.findViewById(R.id.movie_name)
     private val genres : TextView = itemView.findViewById(R.id.genres)
     private val reviews_counter : TextView = itemView.findViewById(R.id.reviews_counter)
     private val age : TextView = itemView.findViewById(R.id.age)

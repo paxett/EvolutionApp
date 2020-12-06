@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 class MoviesList : Fragment(R.layout.fragment_movies_list) {
 
     private var rv_movies_list: RecyclerView? = null
+    val movies = DataUtils().generateMovies()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
         rv_movies_list  = view.findViewById(R.id.rv_movies_list)
-        val movies = DataUtils().generateMovies()
         val movie_adapter = MoviesAdapter(view.context, movies, view.findNavController())
         rv_movies_list?.adapter = movie_adapter
         rv_movies_list?.layoutManager = GridLayoutManager(view.context, 2)
