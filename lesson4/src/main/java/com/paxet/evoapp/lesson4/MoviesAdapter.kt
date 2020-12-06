@@ -3,22 +3,31 @@ package com.paxet.evoapp.lesson4
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 
 class MoviesAdapter(
     context : Context,
-    var movies : List<Movie>
+    var movies : List<Movie>,
 ) : RecyclerView.Adapter<MovieViewHolder>() {
-    private val inflater : LayoutInflater = LayoutInflater.from(context)
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
+    private  var navController: NavController? = null
 
     override fun getItemCount(): Int = movies.size
-    fun getItem(position : Int) : Movie = movies.get(position)
+    fun getItem(position: Int): Movie = movies.get(position)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(inflater.inflate(R.layout.view_holder_movie, parent, false))
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(movies.get(position))
+        if(position == 0) {
+            holder.itemView.setOnClickListener {
+                navController = Navigation.findNavController(holder.itemView)
+                navController!!.navigate(R.id.action_moviesList_to_movieDetails)
+            }
+        }
     }
 }

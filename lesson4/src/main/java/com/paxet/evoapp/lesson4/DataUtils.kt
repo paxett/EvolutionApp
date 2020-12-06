@@ -1,7 +1,6 @@
 package com.paxet.evoapp.lesson4
 
 class DataUtils {
-
     fun generateMovies() : List<Movie> {
         return listOf(
             Movie(
@@ -68,7 +67,7 @@ class DataUtils {
             Actor(
                 "Chris Hemsworth",
                 R.drawable.chris_hemsworth
-            ),
+            )
         )
     }
 }
