@@ -25,10 +25,12 @@ class MoviesAdapter(
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(movies.get(position))
         holder.like_disabled.setOnClickListener {
+            //like movie
             movies.get(position).like = true
             this.notifyItemChanged(position)
         }
         holder.like_enabled.setOnClickListener {
+            //dislike movie
             movies.get(position).like = false
             this.notifyItemChanged(position)
         }
