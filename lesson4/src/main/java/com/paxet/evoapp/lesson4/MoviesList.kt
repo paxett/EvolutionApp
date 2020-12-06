@@ -3,6 +3,7 @@ package com.paxet.evoapp.lesson4
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,7 +15,7 @@ class MoviesList : Fragment(R.layout.fragment_movies_list) {
        super.onViewCreated(view, savedInstanceState)
         rv_movies_list  = view.findViewById(R.id.rv_movies_list)
         val movies = DataUtils().generateMovies()
-        val movie_adapter = MoviesAdapter(view.context, movies)
+        val movie_adapter = MoviesAdapter(view.context, movies, view.findNavController())
         rv_movies_list?.adapter = movie_adapter
         rv_movies_list?.layoutManager = GridLayoutManager(view.context, 2)
 

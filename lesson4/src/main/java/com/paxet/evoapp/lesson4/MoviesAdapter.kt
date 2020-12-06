@@ -24,7 +24,7 @@ class MoviesAdapter(
         holder.bind(movies.get(position))
         if(position == 0) {
             holder.itemView.setOnClickListener {
-                navController!!.navigate(R.id.action_moviesList_to_movieDetails)
+                navController.navigate(R.id.action_moviesList_to_movieDetails)
             }
         }
     }
