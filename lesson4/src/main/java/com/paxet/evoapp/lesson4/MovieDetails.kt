@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MovieDetails : Fragment(R.layout.fragment_movie_details) {
-    private var rv_actors_list: RecyclerView? = null
+
+    val actors : List<Actor> by lazy {
+        DataUtils().generateActors()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        rv_actors_list = view.findViewById(R.id.rv_actors_list)
-        val actors = DataUtils().generateActors()
-        val actors_adapter = ActorsAdapter(view.context, actors)
-        rv_actors_list?.adapter = actors_adapter
-        rv_actors_list?.layoutManager =
-            LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
+        view.findViewById<RecyclerView>(R.id.rv_actors_list).run {
+            adapter = ActorsAdapter(actors)
+            layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
+        }
     }
 }
