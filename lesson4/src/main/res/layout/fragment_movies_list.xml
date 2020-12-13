@@ -1,150 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@color/black">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/target"
+        android:contentDescription="@string/target_image_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/target"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/list_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/movies_list"
+        app:layout_constraintBottom_toBottomOf="@+id/target"
+        app:layout_constraintStart_toEndOf="@+id/target"
+        app:layout_constraintTop_toTopOf="@+id/target"
+        style="@style/Header2Text"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_movies_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingTop="16dp"
         android:background="@color/black"
-        tools:context=".MoviesList">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_header" />
 
-
-        <TextView
-            android:id="@+id/list_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/movies_list"
-            app:layout_constraintBottom_toBottomOf="@+id/target"
-            app:layout_constraintStart_toEndOf="@+id/target"
-            app:layout_constraintTop_toTopOf="@+id/target"
-            style="@style/Header2Text"/>
-
-        <ImageView
-            android:id="@+id/poster"
-            android:contentDescription="@string/poster_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="27dp"
-            android:src="@drawable/movie"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_header" />
-
-
-        <ImageView
-            android:id="@+id/bg"
-            android:contentDescription="@string/mask_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/poster"
-            app:layout_constraintStart_toStartOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/poster"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/bg"/>
-
-        <ImageView
-            android:id="@+id/target"
-            android:contentDescription="@string/target_image_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="55dp"
-            android:src="@drawable/target"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/age"
-            style="@style/Header3Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rect_rounded"
-            android:padding="4dp"
-            android:text="@string/age_constraint"
-            app:layout_constraintStart_toStartOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/poster" />
-
-        <TextView
-            android:id="@+id/genres"
-            style="@style/SmallRedText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:padding="2dp"
-            android:text="@string/genres"
-            app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-            app:layout_constraintStart_toStartOf="@+id/poster" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:isIndicator="true"
-            android:numStars="6"
-            android:padding="8dp"
-            android:progressBackgroundTint="@color/dark_grey"
-            android:progressTint="@color/red"
-            android:rating="3"
-            android:stepSize="1"
-            app:layout_constraintBottom_toBottomOf="@+id/poster"
-            app:layout_constraintStart_toStartOf="@+id/poster" />
-
-        <TextView
-            android:id="@+id/header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/movie_name_line"
-            style="@style/Header2Text"
-            app:layout_constraintBottom_toBottomOf="@+id/bg"
-            app:layout_constraintStart_toStartOf="@+id/bg" />
-
-        <TextView
-            android:id="@+id/counter"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp"
-            android:paddingTop="10dp"
-            android:text="@string/reviews_counter"
-            style="@style/Header6Text"
-            app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
-            app:layout_constraintStart_toEndOf="@+id/ratingBar"
-            app:layout_constraintTop_toTopOf="@+id/ratingBar" />
-
-        <ImageView
-            android:id="@+id/like"
-            android:contentDescription="@string/like_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/like"
-            app:layout_constraintBottom_toBottomOf="@+id/age"
-            app:layout_constraintEnd_toEndOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/age" />
-
-        <TextView
-            android:id="@+id/textView6"
-            style="@style/Header6Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/movie_duration"
-            app:layout_constraintBottom_toBottomOf="@+id/bg"
-            app:layout_constraintStart_toStartOf="@+id/bg" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

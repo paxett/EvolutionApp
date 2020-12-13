@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:context=".MoviesList">
 
 
-        <TextView
-            android:id="@+id/list_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/movies_list"
-            app:layout_constraintBottom_toBottomOf="@+id/target"
-            app:layout_constraintStart_toEndOf="@+id/target"
-            app:layout_constraintTop_toTopOf="@+id/target"
-            style="@style/Header2Text"/>
-
         <ImageView
-            android:id="@+id/poster"
-            android:contentDescription="@string/poster_desc"
+            android:id="@+id/color_poster"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="27dp"
-            android:src="@drawable/color_poster_avengers_end_game"
+            android:contentDescription="@string/poster_desc"
+            tools:src="@drawable/color_poster_avengers_end_game"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_header" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
@@ -43,22 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/poster"
-            app:layout_constraintStart_toStartOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/poster"
+            app:layout_constraintEnd_toEndOf="@+id/color_poster"
+            app:layout_constraintStart_toStartOf="@+id/color_poster"
+            app:layout_constraintTop_toTopOf="@+id/color_poster"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/bg_mask"/>
 
-        <ImageView
-            android:id="@+id/target"
-            android:contentDescription="@string/target_image_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="55dp"
-            android:src="@drawable/target"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/age"
@@ -69,9 +46,9 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/rect_rounded"
             android:padding="4dp"
-            android:text="@string/age_constraint"
-            app:layout_constraintStart_toStartOf="@+id/poster"
-            app:layout_constraintTop_toTopOf="@+id/poster" />
+            tools:text="@string/age_constraint"
+            app:layout_constraintStart_toStartOf="@+id/color_poster"
+            app:layout_constraintTop_toTopOf="@+id/color_poster" />
 
         <TextView
             android:id="@+id/genres"
@@ -80,9 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:padding="2dp"
-            android:text="@string/genres"
+            tools:text="@string/genres"
             app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-            app:layout_constraintStart_toStartOf="@+id/poster" />
+            app:layout_constraintStart_toStartOf="@+id/color_poster" />
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -95,56 +72,66 @@
             android:padding="8dp"
             android:progressBackgroundTint="@color/dark_grey"
             android:progressTint="@color/red"
-            android:rating="3"
+            tools:rating="3"
             android:stepSize="1"
-            app:layout_constraintBottom_toBottomOf="@+id/poster"
-            app:layout_constraintStart_toStartOf="@+id/poster" />
+            app:layout_constraintBottom_toBottomOf="@+id/color_poster"
+            app:layout_constraintStart_toStartOf="@+id/color_poster" />
 
         <TextView
-            android:id="@+id/header"
+            android:id="@+id/movie_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/movie_name_line"
+            tools:text="@string/movie_name_line"
             style="@style/Header2Text"
             app:layout_constraintBottom_toBottomOf="@+id/bg"
             app:layout_constraintStart_toStartOf="@+id/bg" />
 
         <TextView
-            android:id="@+id/counter"
+            android:id="@+id/reviews_counter"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
             android:paddingTop="10dp"
-            android:text="@string/reviews_counter"
+            tools:text="@string/reviews_counter"
             style="@style/Header6Text"
             app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
             app:layout_constraintStart_toEndOf="@+id/ratingBar"
             app:layout_constraintTop_toTopOf="@+id/ratingBar" />
 
         <ImageView
-            android:id="@+id/like"
+            android:id="@+id/like_disabled"
             android:contentDescription="@string/like_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:src="@drawable/like_disabled"
             app:layout_constraintBottom_toBottomOf="@+id/age"
-            app:layout_constraintEnd_toEndOf="@+id/poster"
+            app:layout_constraintEnd_toEndOf="@+id/color_poster"
+            app:layout_constraintTop_toTopOf="@+id/age" />
+
+        <ImageView
+            android:id="@+id/like_enabled"
+            android:contentDescription="@string/like_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/like_enabled"
+            app:layout_constraintBottom_toBottomOf="@+id/age"
+            app:layout_constraintEnd_toEndOf="@+id/color_poster"
             app:layout_constraintTop_toTopOf="@+id/age" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/duration"
             style="@style/Header6Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/movie_duration"
+            tools:text="@string/movie_duration"
             app:layout_constraintBottom_toBottomOf="@+id/bg"
             app:layout_constraintStart_toStartOf="@+id/bg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
