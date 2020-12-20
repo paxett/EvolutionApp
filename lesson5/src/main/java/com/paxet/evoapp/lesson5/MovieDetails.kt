@@ -13,7 +13,9 @@ import com.paxet.evoapp.lesson5.data.Movie
 
 class MovieDetails : Fragment(R.layout.fragment_movie_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val movie : Movie? = arguments?.getParcelable("movie")
+        val movie : Movie = arguments?.getParcelable("movie") ?: Movie (
+            0, "", "", "", "", 0f, 0, 0, 0, listOf(), listOf()
+                )
         val bw_poster : ImageView = view.findViewById(R.id.bw_poster)
         val age : TextView = view.findViewById(R.id.age)
         val name : TextView = view.findViewById(R.id.name)
@@ -22,15 +24,15 @@ class MovieDetails : Fragment(R.layout.fragment_movie_details) {
         val reviewCounter : TextView = view.findViewById(R.id.counter)
         val storyLine : TextView = view.findViewById(R.id.body)
 
-        Glide.with(view).load(movie?.backdrop).into(bw_poster)
-        age.text = movie?.minimumAge.toString() + "+"
-        name.text = movie?.title
-        genres.text = movie?.genres?.joinToString { it.name }
-        rating.rating = movie?.ratings ?: 0f
-        reviewCounter.text = movie?.numberOfRatings.toString()
-        storyLine.text = movie?.overview
+        Glide.with(view).load(movie.backdrop).into(bw_poster)
+        age.text = movie.minimumAge.toString() + "+"
+        name.text = movie.title
+        genres.text = movie.genres.joinToString { it.name }
+        rating.rating = movie.ratings ?: 0f
+        reviewCounter.text = movie.numberOfRatings.toString()
+        storyLine.text = movie.overview
         view.findViewById<RecyclerView>(R.id.rv_actors_list).run {
-            adapter = ActorsAdapter(movie!!.actors)
+            adapter = ActorsAdapter(movie.actors)
             layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
