@@ -3,6 +3,7 @@ package com.paxet.evoapp.lesson5
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.paxet.evoapp.lesson5.data.Actor
 
 class ActorsAdapter(
     var actors : List<Actor>
