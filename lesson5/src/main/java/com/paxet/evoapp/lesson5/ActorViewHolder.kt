@@ -4,13 +4,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.paxet.evoapp.lesson5.data.Actor
 
 class ActorViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-    private val avatar = itemView.findViewById<ImageView>(R.id.avatar)
-    private val actor_name = itemView.findViewById<TextView>(R.id.actor_name)
+    private val avatar : ImageView = itemView.findViewById(R.id.avatar)
+    private val actor_name : TextView = itemView.findViewById(R.id.actor_name)
+    private val view = view
 
     fun bind(actor : Actor) {
-        avatar.setImageResource(actor.avatar)
+        Glide.with(view).load(actor.picture).into(avatar)
         actor_name.text = actor.name
     }
 }

@@ -1,6 +1,10 @@
 package com.paxet.evoapp.lesson5.data
 
-data class Movie(
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Movie (
     val id: Int,
     val title: String,
     val overview: String,
@@ -12,4 +16,4 @@ data class Movie(
     val runtime: Int,
     val genres: List<Genre>,
     val actors: List<Actor>
-)
+) : Parcelable
