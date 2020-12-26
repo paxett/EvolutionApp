@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/moviesList">
+
+    <fragment
+        android:id="@+id/moviesList"
+        android:name="com.paxet.evoapp.lesson6.MoviesList"
+        android:label="MoviesList" >
+        <action
+            android:id="@+id/action_moviesList_to_movieDetails"
+            app:destination="@id/movieDetails"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetails"
+        android:name="com.paxet.evoapp.lesson6.MovieDetails"
+        android:label="MovieDetails" >
+        <action
+            android:id="@+id/action_movieDetails_to_moviesList"
+            app:destination="@id/moviesList" />
+        <argument
+            android:name="movie"
+            app:argType="com.paxet.evoapp.lesson6.data.Movie" />
+    </fragment>
+</navigation>
