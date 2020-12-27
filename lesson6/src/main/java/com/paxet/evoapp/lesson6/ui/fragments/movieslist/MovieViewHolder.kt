@@ -1,4 +1,4 @@
-package com.paxet.evoapp.lesson6
+package com.paxet.evoapp.lesson6.ui.fragments.movieslist
 
 import android.view.View
 import android.widget.ImageView
@@ -6,6 +6,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.paxet.evoapp.lesson6.R
 import com.paxet.evoapp.lesson6.data.Movie
 
 class MovieViewHolder(view : View) : RecyclerView.ViewHolder(view) {

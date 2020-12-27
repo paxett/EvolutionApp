@@ -1,13 +1,19 @@
-package com.paxet.evoapp.lesson6
+package com.paxet.evoapp.lesson6.ui.fragments.moviedetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.paxet.evoapp.lesson6.R
 import com.paxet.evoapp.lesson6.data.Actor
 
 class ActorsAdapter(
-    var actors : List<Actor>
-    ) : RecyclerView.Adapter<ActorViewHolder>() {
+
+) : RecyclerView.Adapter<ActorViewHolder>() {
+        var actors : List<Actor> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
         override fun getItemCount(): Int = actors.size
         fun getItem(position : Int) : Actor = actors.get(position)
 

@@ -1,10 +1,11 @@
-package com.paxet.evoapp.lesson6
+package com.paxet.evoapp.lesson6.ui.fragments.movieslist
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.paxet.evoapp.lesson6.R
 import com.paxet.evoapp.lesson6.data.Movie
 
 class MoviesAdapter(

@@ -1,7 +1,8 @@
-package com.paxet.evoapp.lesson6
+package com.paxet.evoapp.lesson6.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.paxet.evoapp.lesson6.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
