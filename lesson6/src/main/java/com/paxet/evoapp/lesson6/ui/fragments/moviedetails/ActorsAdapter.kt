@@ -7,7 +7,6 @@ import com.paxet.evoapp.lesson6.R
 import com.paxet.evoapp.lesson6.data.Actor
 
 class ActorsAdapter(
-
 ) : RecyclerView.Adapter<ActorViewHolder>() {
         var actors : List<Actor> = listOf()
         set(value) {

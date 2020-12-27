@@ -31,21 +31,23 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         val bw_poster : ImageView = view.findViewById(R.id.bw_poster)
         val age : TextView = view.findViewById(R.id.age)
         val name : TextView = view.findViewById(R.id.name)
-        val genres : TextView = view.findViewById(R.id.genres)
+        val genresTV : TextView = view.findViewById(R.id.genres)
         val rating : RatingBar = view.findViewById(R.id.ratingBar)
         val reviewCounter : TextView = view.findViewById(R.id.counter)
-        val storyLine : TextView = view.findViewById(R.id.body)
-        viewModel.movieLD.observe(viewLifecycleOwner, Observer {
-            movie ->
-            Glide.with(view).load(movie.backdrop).into(bw_poster)
-            age.text = movie.minimumAge.toString() + "+"
-            name.text = movie.title
-            genres.text = movie.genres.joinToString { it.name }
-            rating.rating = movie.ratings ?: 0f
-            reviewCounter.text = movie.numberOfRatings.toString()
-            storyLine.text = movie.overview
+        val storyLine: TextView = view.findViewById(R.id.body)
 
-            actorsAdapter.actors = movie.actors
+        viewModel.movieLD.observe(viewLifecycleOwner, Observer { movie ->
+            movie?.run {
+                Glide.with(view).load(backdrop).into(bw_poster)
+                age.text = minimumAge.toString() + "+"
+                name.text = title
+                genresTV.text = genres.joinToString { it.name }
+                rating.rating = ratings ?: 0f
+                reviewCounter.text = numberOfRatings.toString()
+                storyLine.text = overview
+
+                actorsAdapter.actors = actors
+            }
         })
     }
 }
