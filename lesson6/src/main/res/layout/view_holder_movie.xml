@@ -8,7 +8,7 @@
         android:layout_width="170dp"
         android:layout_height="296dp"
         android:layout_margin="16dp"
-        tools:context=".MoviesList">
+        tools:context=".ui.fragments.movieslist.MoviesListFragment">
 
 
     <ImageView

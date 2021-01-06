@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/moviesList"
-        android:name="com.paxet.evoapp.lesson6.MoviesList"
+        android:name="com.paxet.evoapp.lesson6.ui.fragments.movieslist.MoviesListFragment"
         android:label="MoviesList" >
         <action
             android:id="@+id/action_moviesList_to_movieDetails"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetails"
-        android:name="com.paxet.evoapp.lesson6.MovieDetails"
+        android:name="com.paxet.evoapp.lesson6.ui.fragments.moviedetails.MovieDetailsFragment"
         android:label="MovieDetails" >
         <action
             android:id="@+id/action_movieDetails_to_moviesList"

@@ -1,19 +1,25 @@
-package com.paxet.evoapp.lesson6
+package com.paxet.evoapp.lesson6.ui.fragments.movieslist
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.paxet.evoapp.lesson6.R
 import com.paxet.evoapp.lesson6.data.Movie
 
-class MoviesAdapter(
-        var movies : List<Movie>,
-        val navController : NavController
+class MoviesListAdapter(
+    view : View
 ) : RecyclerView.Adapter<MovieViewHolder>() {
+    val view = view
+    var movies : List<Movie> = listOf()
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount(): Int =  movies.size
-    //fun getItem(position: Int): Movie = movies.get(position)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,7 +31,7 @@ class MoviesAdapter(
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("movie", movies[position])
-            navController.navigate(R.id.action_moviesList_to_movieDetails, bundle)
+            view.findNavController().navigate(R.id.action_moviesList_to_movieDetails, bundle)
         }
     }
 }
