@@ -28,7 +28,7 @@ class MovieDetails : Fragment(R.layout.fragment_movie_details) {
         age.text = movie.minimumAge.toString() + "+"
         name.text = movie.title
         genres.text = movie.genres.joinToString { it.name }
-        rating.rating = movie.ratings ?: 0f
+        rating.rating = movie.ratings
         reviewCounter.text = movie.numberOfRatings.toString()
         storyLine.text = movie.overview
         view.findViewById<RecyclerView>(R.id.rv_actors_list).run {

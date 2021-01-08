@@ -1,20 +1,20 @@
-package com.paxet.evoapp.lesson7.ui.fragments.moviedetails
+package com.paxet.evoapp.lesson7.ui.fragments.actors
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.paxet.evoapp.lesson7.R
-import com.paxet.evoapp.lesson7.data.Actor
+import com.paxet.evoapp.lesson7.data.tmdbapi.CastItem
 
 class ActorsAdapter(
 ) : RecyclerView.Adapter<ActorViewHolder>() {
-        var actors : List<Actor> = listOf()
+        var actors : List<CastItem?> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
         override fun getItemCount(): Int = actors.size
-        fun getItem(position : Int) : Actor = actors.get(position)
+        fun getItem(position : Int) : CastItem? = actors.get(position)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
             val inflater = LayoutInflater.from(parent.context)

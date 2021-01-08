@@ -42,7 +42,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                 age.text = minimumAge.toString() + "+"
                 name.text = title
                 genresTV.text = genres.joinToString { it.name }
-                rating.rating = ratings ?: 0f
+                rating.rating = ratings
                 reviewCounter.text = numberOfRatings.toString()
                 storyLine.text = overview
 

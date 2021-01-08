@@ -18,7 +18,8 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
             adapter = moviesListAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
-        viewModel.initMoviesList(view)
+        viewModel.initConfiguration()
+        viewModel.initMoviesList()
     }
 
     private fun initObserver(moviesListAdapter : MoviesListAdapter) {

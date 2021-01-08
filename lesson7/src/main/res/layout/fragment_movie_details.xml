@@ -23,14 +23,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bw_poster_avengers_end_game" />
+            tools:srcCompat="@drawable/bw_poster_avengers_end_game" />
 
         <ImageView
             android:id="@+id/gradient_mask"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/mask_desc"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:layout_marginStart="8dp"
-            android:text="@string/movie_name"
+            tools:text="@string/movie_name"
             style="@style/Header1Text"
             app:layout_constraintBottom_toBottomOf="@id/bw_poster"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="0dp"
             android:padding="8dp"
-            android:text="@string/genres"
+            tools:text="@string/genres"
             style="@style/RedText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -67,7 +67,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
             android:padding="8dp"
-            android:text="@string/age_constraint"
+            tools:text="@string/age_constraint"
             style="@style/Header4Text"
             app:layout_constraintBottom_toTopOf="@+id/name"
             app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +97,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
             android:padding="8dp"
-            android:text="@string/reviews_counter"
+            tools:text="@string/reviews_counter"
             style="@style/Header5Text"
             app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
             app:layout_constraintStart_toEndOf="@+id/ratingBar"
@@ -123,7 +123,7 @@
             android:layout_marginEnd="8dp"
             android:gravity="start"
             android:padding="8dp"
-            android:text="@string/story"
+            tools:text="@string/story"
             style="@style/MainText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,123 +141,6 @@
             style="@style/Header2Text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/body" />
-
-<!--        <ImageView-->
-<!--            android:id="@+id/face1"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:contentDescription="@string/actor_photo_desc"-->
-<!--            android:padding="8dp"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:layout_constraintDimensionRatio="1:1"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/face2"-->
-<!--            app:layout_constraintHorizontal_chainStyle="spread_inside"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/cast"-->
-<!--            app:srcCompat="@drawable/robert_downey_jr" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/face2"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:contentDescription="@string/actor_photo_desc"-->
-<!--            android:padding="8dp"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:layout_constraintDimensionRatio="1:1"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/face3"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/face1"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/cast"-->
-<!--            app:layout_goneMarginEnd="16dp"-->
-<!--            app:layout_goneMarginStart="16dp"-->
-<!--            app:srcCompat="@drawable/chris_evans" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/face3"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:contentDescription="@string/actor_photo_desc"-->
-<!--            android:padding="8dp"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:layout_constraintDimensionRatio="1:1"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/face4"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/face2"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/cast"-->
-<!--            app:layout_goneMarginEnd="16dp"-->
-<!--            app:layout_goneMarginStart="16dp"-->
-<!--            app:srcCompat="@drawable/mark_ruffalo" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/face4"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:contentDescription="@string/actor_photo_desc"-->
-<!--            android:padding="8dp"-->
-<!--            android:scaleType="fitXY"-->
-<!--            app:layout_constraintDimensionRatio="1:1"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/face3"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/cast"-->
-<!--            app:layout_goneMarginEnd="16dp"-->
-<!--            app:layout_goneMarginStart="16dp"-->
-<!--            app:srcCompat="@drawable/chris_hemsworth" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/actor1"-->
-<!--            style="@style/Header3Text"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="6dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            android:paddingBottom="8dp"-->
-<!--            android:text="@string/actor_name1"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/face1"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/face1"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/face1" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/actor2"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="6dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            android:paddingBottom="8dp"-->
-<!--            android:text="@string/actor_name2"-->
-<!--            style="@style/Header3Text"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/face2"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/face2"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/face2" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/actor3"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="6dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            android:paddingBottom="8dp"-->
-<!--            android:text="@string/actor_name3"-->
-<!--            style="@style/Header3Text"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/face3"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/face3"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/face3" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/actor4"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="6dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            android:paddingBottom="8dp"-->
-<!--            android:text="@string/actor_name4"-->
-<!--            style="@style/Header3Text"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/face4"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/face4"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/face4" />-->
 
         <TextView
             android:id="@+id/back_txt"

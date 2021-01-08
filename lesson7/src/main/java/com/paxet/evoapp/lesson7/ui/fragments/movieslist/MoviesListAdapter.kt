@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.paxet.evoapp.lesson7.R
-import com.paxet.evoapp.lesson7.data.Movie
+import com.paxet.evoapp.lesson7.data.tmdbapi.MovieItemAPI
 
 class MoviesListAdapter(
     view : View
 ) : RecyclerView.Adapter<MovieViewHolder>() {
     val view = view
-    var movies : List<Movie> = listOf()
+    var movies : List<MovieItemAPI> = listOf()
     set(value) {
         field = value
         notifyDataSetChanged()
@@ -30,7 +30,7 @@ class MoviesListAdapter(
         holder.bind(movies.get(position))
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
-            bundle.putParcelable("movie", movies[position])
+            bundle.putInt("movieId", movies[position].id ?: -1)
             view.findNavController().navigate(R.id.action_moviesList_to_movieDetails, bundle)
         }
     }

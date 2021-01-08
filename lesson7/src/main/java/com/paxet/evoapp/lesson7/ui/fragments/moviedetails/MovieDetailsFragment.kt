@@ -1,5 +1,7 @@
 package com.paxet.evoapp.lesson7.ui.fragments.moviedetails
 
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.paxet.evoapp.lesson7.R
+import com.paxet.evoapp.lesson7.data.network.NetworkModule
+import com.paxet.evoapp.lesson7.ui.fragments.actors.ActorsAdapter
 
 class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
     val viewModel : MovieDetailsVM by viewModels()
@@ -27,7 +31,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         viewModel.initMovie(arguments)
     }
 
-    private fun initObservers(view : View) {
+    private fun initObservers(view: View) {
         val bw_poster : ImageView = view.findViewById(R.id.bw_poster)
         val age : TextView = view.findViewById(R.id.age)
         val name : TextView = view.findViewById(R.id.name)
@@ -37,16 +41,26 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         val storyLine: TextView = view.findViewById(R.id.body)
 
         viewModel.movieLD.observe(viewLifecycleOwner, Observer { movie ->
-            movie?.run {
-                Glide.with(view).load(backdrop).into(bw_poster)
-                age.text = minimumAge.toString() + "+"
-                name.text = title
-                genresTV.text = genres.joinToString { it.name }
-                rating.rating = ratings ?: 0f
-                reviewCounter.text = numberOfRatings.toString()
-                storyLine.text = overview
+            movie?.first.run {
+                Glide.with(view)
+                        .load("${NetworkModule.baseImageUrl}/w342/${this?.backdropPath}")
+                        .into(bw_poster)
 
-                actorsAdapter.actors = actors
+                val colorMatrix = ColorMatrix()
+                colorMatrix.setSaturation(0f)
+                val filter = ColorMatrixColorFilter(colorMatrix)
+                bw_poster.setColorFilter(filter)
+
+                age.text = if (this?.adult == true) "18+" else "0+"
+                name.text = this?.title ?: ""
+                genresTV.text = this?.genres?.joinToString { it?.name.toString() } ?: ""
+                rating.rating = this?.voteAverage?.toFloat() ?: 0f
+                reviewCounter.text = this?.voteCount.toString()
+                storyLine.text = this?.overview ?: ""
+            }
+
+            movie?.second.run {
+                actorsAdapter.actors = this?.cast ?: listOf()
             }
         })
     }
