@@ -1,24 +1,35 @@
 package com.paxet.evoapp.lesson7.ui.fragments.movieslist
 
-import android.view.View
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.paxet.evoapp.lesson7.data.Movie
-import com.paxet.evoapp.lesson7.data.loadMovies
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.paxet.evoapp.lesson7.data.network.NetworkModule
+import com.paxet.evoapp.lesson7.data.tmdbapi.MovieItemAPI
+import com.paxet.evoapp.lesson7.ui.fragments.BaseVM
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-class MoviesListVM : ViewModel() {
-    private val _moviesListLD = MutableLiveData<List<Movie>>()
-    val moviesListLD : LiveData<List<Movie>> get() = _moviesListLD
-    private val scope = CoroutineScope(Dispatchers.IO)
+class MoviesListVM : BaseVM() {
 
-    fun initMoviesList(view : View) {
-        scope.launch {
-            var movies = loadMovies(view.context)
-            _moviesListLD.postValue(movies)
+    private val _moviesListLD = MutableLiveData<List<MovieItemAPI>>()
+    val moviesListLD : LiveData<List<MovieItemAPI>> get() = _moviesListLD
+
+    val tmdbAPI = NetworkModule.tmdbAPI
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Log.e(TAG, "Coroutine exception, scope active:${coroutineScope.isActive}", throwable)
+    }
+
+    fun initMoviesList() {
+        coroutineScope.launch(exceptionHandler) {
+            val moviesNowPlaying = tmdbAPI.getNowPlaying(apiKey).results ?: listOf()
+            _moviesListLD.postValue(moviesNowPlaying as List<MovieItemAPI>?)
         }
     }
+
+    companion object {
+        private val TAG = MoviesListVM::class.java.simpleName
+    }
+
 }
