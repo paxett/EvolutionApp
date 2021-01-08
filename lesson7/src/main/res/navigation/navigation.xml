@@ -20,7 +20,7 @@
             android:id="@+id/action_movieDetails_to_moviesList"
             app:destination="@id/moviesList" />
         <argument
-            android:name="movie"
-            app:argType="com.paxet.evoapp.lesson7.data.Movie" />
+            android:name="movieId"
+            app:argType="integer" />
     </fragment>
 </navigation>
