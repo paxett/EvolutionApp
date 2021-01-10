@@ -27,5 +27,10 @@ interface TmdbAPI {
         @Path("movie_id")  movieId : String,
         @Query("api_key") apiKey : String
     ) : MovieCreditsAPI
+
+    @GET("genre/movie/list")
+    suspend fun getGenres(
+        @Query("api_key") apiKey : String
+    ) : GenresAPI
 }
 

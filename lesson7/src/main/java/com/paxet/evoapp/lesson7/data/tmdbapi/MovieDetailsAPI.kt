@@ -99,16 +99,6 @@ data class BelongsToCollection(
 )
 
 @Serializable
-data class GenresItem(
-
-	@SerialName("name")
-	val name: String? = null,
-
-	@SerialName("id")
-	val id: Int? = null
-)
-
-@Serializable
 data class ProductionCountriesItem(
 
 	@SerialName("iso_3166_1")

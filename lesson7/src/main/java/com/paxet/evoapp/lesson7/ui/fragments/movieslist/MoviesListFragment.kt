@@ -19,6 +19,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
         viewModel.initConfiguration()
+        viewModel.initGenres()
         viewModel.initMoviesList()
     }
 
