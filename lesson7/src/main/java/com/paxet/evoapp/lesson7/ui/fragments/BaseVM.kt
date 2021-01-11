@@ -7,7 +7,7 @@ import com.paxet.evoapp.lesson7.data.network.NetworkModule
 import com.paxet.evoapp.lesson7.data.network.NetworkModule.tmdbAPI
 import kotlinx.coroutines.*
 
-open class BaseVM : ViewModel() {
+abstract class BaseVM : ViewModel() {
     val coroutineScope = CoroutineScope(Job() + Dispatchers.IO)
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Log.e(BaseVM.TAG, "Coroutine exception, scope active:${coroutineScope.isActive}", throwable)
@@ -24,7 +24,6 @@ open class BaseVM : ViewModel() {
             GenresData.genresData = tmdbAPI.getGenres(apiKey)
         }
     }
-
 
     companion object {
         private val TAG = BaseVM::class.java.simpleName
