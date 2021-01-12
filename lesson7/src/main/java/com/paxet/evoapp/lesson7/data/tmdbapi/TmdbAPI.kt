@@ -16,6 +16,12 @@ interface TmdbAPI {
         @Query("api_key") apiKey : String
     ) : MoviesListAPI
 
+    @GET("search/movie")
+    suspend fun searchMovies(
+            @Query("query") query : String,
+            @Query("api_key") apiKey : String
+    ) : MoviesListAPI
+
     @GET("movie/{movie_id}")
     suspend fun getMovieDetails(
         @Path("movie_id")  movieId : String,

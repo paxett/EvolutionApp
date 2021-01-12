@@ -28,6 +28,13 @@ class MoviesListVM : BaseVM() {
         }
     }
 
+    fun searchMoviesList(query : String) {
+        coroutineScope.launch(exceptionHandler) {
+            val moviesNowPlaying = tmdbAPI.searchMovies(query, apiKey).results ?: listOf()
+            _moviesListLD.postValue(moviesNowPlaying as List<MovieItemAPI>?)
+        }
+    }
+
     companion object {
         private val TAG = MoviesListVM::class.java.simpleName
     }

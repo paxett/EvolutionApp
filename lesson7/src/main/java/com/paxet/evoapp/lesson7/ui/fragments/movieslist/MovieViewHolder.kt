@@ -27,14 +27,15 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(movie: MovieItemAPI) {
-        Glide.with(view)
-            .load("${NetworkModule.baseImageUrl}/w154/${movie.posterPath}")
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
-            .into(poster)
+            Glide.with(view)
+                    .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
+                    .placeholder(R.drawable.bg_mask)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
+                    .into(poster)
 
         title.text = movie.title
-        GenresData.genresData.genres
-        genres.text = GenresData.genresData.genres?.filter {
+        GenresData.genresData?.genres
+        genres.text = GenresData.genresData?.genres?.filter {
             movie.genreIds?.contains(it?.id) ?: false
         }?.joinToString(separator = ", ") { it?.name.toString()}
 
