@@ -28,7 +28,7 @@
         <ImageView
             android:id="@+id/gradient_mask"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/mask_desc"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,9 +44,9 @@
             android:layout_marginStart="8dp"
             tools:text="@string/movie_name"
             style="@style/Header1Text"
-            app:layout_constraintBottom_toBottomOf="@id/bw_poster"
+            app:layout_constraintBottom_toBottomOf="@id/gradient_mask"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bw_poster" />
+            app:layout_constraintTop_toBottomOf="@+id/gradient_mask" />
 
         <TextView
             android:id="@+id/genres"
