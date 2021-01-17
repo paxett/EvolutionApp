@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         val pref: SharedPreferences = getSharedPreferences("searchLine", 0)
         val editor: SharedPreferences.Editor = pref.edit()
         editor.clear()
-        editor.commit()
+        editor.apply()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

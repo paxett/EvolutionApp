@@ -9,6 +9,7 @@ import com.paxet.evoapp.lesson7.ui.fragments.BaseVM
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MoviesListVM : BaseVM() {
 
@@ -33,6 +34,22 @@ class MoviesListVM : BaseVM() {
             val moviesNowPlaying = tmdbAPI.searchMovies(query, apiKey).results ?: listOf()
             _moviesListLD.postValue(moviesNowPlaying as List<MovieItemAPI>?)
         }
+    }
+
+    var timer = Timer()
+    val DELAY: Long = 1000L
+    fun initTimer(searchLine : String) {
+        timer.cancel()
+        timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                if(searchLine == "") {
+                    initMoviesList()
+                } else {
+                    searchMoviesList(searchLine)
+                }
+            }
+        }, DELAY)
     }
 
     companion object {

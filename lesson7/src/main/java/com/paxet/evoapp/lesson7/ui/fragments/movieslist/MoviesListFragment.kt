@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.paxet.evoapp.lesson7.R
-import java.util.*
 
 class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
     val viewModel : MoviesListVM by viewModels()
@@ -30,28 +29,10 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
         val searchLineView = view.findViewById<EditText>(R.id.search)
 
         val mTextWatcher: TextWatcher = object : TextWatcher {
-            private var timer = Timer()
-            private val DELAY: Long = 1000L
-
             override fun afterTextChanged(s: Editable?) {
-                timer.cancel()
-                timer = Timer()
-                timer.schedule(object : TimerTask() {
-                    override fun run() {
-                        val searchLine = view.findViewById<EditText>(R.id.search).text.toString()
-                        if(searchLine == "") {
-                            viewModel.initMoviesList()
-                            //Clear search line in shared preferences
-                            editor.remove("search_line")
-                            editor.commit()
-                        } else {
-                            viewModel.searchMoviesList(searchLine)
-                            //Store search line via shared preferences
-                            editor.putString("search_line", searchLine)
-                            editor.commit()
-                        }
-                    }
-                }, DELAY)
+                editor.putString("search_line", view.findViewById<EditText>(R.id.search).text.toString())
+                editor.apply()
+                viewModel.initTimer(pref.getString("search_line", "") ?: "")
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -67,7 +48,9 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
 
         //Set search line from shared preferences
         searchLineView.addTextChangedListener(mTextWatcher)
-        searchLineView.setText(pref.getString("search_line", ""))
+        if (pref.getString("search_line", "") == "") {
+            viewModel.initMoviesList()
+        }
     }
 
     private fun initObserver(moviesListAdapter: MoviesListAdapter) {
