@@ -30,7 +30,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
 
         val mTextWatcher: TextWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                editor.putString("search_line", view.findViewById<EditText>(R.id.search).text.toString())
+                editor.putString("search_line", searchLineView.text.toString())
                 editor.apply()
                 viewModel.initTimer(pref.getString("search_line", "") ?: "")
             }
