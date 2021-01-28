@@ -13,7 +13,11 @@ data class Genres (
 
     @ColumnInfo(name="name")
     val name: String? = null
-) {
-    constructor(genresItem: GenresItem?) :
-            this(genresItem?.id, genresItem?.name)
+)
+
+fun Genres.toGenresItem() : GenresItem {
+    return GenresItem(
+        this.name,
+        this.id
+    )
 }

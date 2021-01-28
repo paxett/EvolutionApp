@@ -11,7 +11,7 @@ interface GenresDao {
     fun getAll(): List<Genres>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(genres: List<Genres>)
+    fun insertAll(genres: List<Genres?>)
 
     @Insert
     fun insertGenre(genre: Genres): Long
