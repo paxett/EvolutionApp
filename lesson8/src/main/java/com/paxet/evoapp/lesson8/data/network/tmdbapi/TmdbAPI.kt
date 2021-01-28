@@ -1,4 +1,4 @@
-package com.paxet.evoapp.lesson8.data.tmdbapi
+package com.paxet.evoapp.lesson8.data.network.tmdbapi
 
 import retrofit2.http.GET
 import retrofit2.http.Path

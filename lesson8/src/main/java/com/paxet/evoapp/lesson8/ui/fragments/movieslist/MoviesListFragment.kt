@@ -14,7 +14,6 @@ import com.paxet.evoapp.lesson8.R
 
 class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
     val viewModel : MoviesListVM by viewModels()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val moviesListAdapter = MoviesListAdapter(view)
         initObserver(moviesListAdapter)
@@ -42,10 +41,8 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
             }
 
         }
-
         viewModel.initConfiguration()
         viewModel.initGenres()
-
         //Set search line from shared preferences
         searchLineView.addTextChangedListener(mTextWatcher)
         if (pref.getString("search_line", "") == "") {

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.paxet.evoapp.lesson8.R
 import com.paxet.evoapp.lesson8.data.network.NetworkModule
-import com.paxet.evoapp.lesson8.data.tmdbapi.CastItem
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.CastItem
 
 class ActorViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val avatar : ImageView = itemView.findViewById(R.id.avatar)

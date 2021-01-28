@@ -1,7 +1,7 @@
 package com.paxet.evoapp.lesson8.data.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.paxet.evoapp.lesson8.data.tmdbapi.TmdbAPI
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.TmdbAPI
 import kotlinx.serialization.json.Json
 import okhttp3.ConnectionSpec
 import okhttp3.MediaType.Companion.toMediaType
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 
 object NetworkModule {
     private val baseMovieUrl = "https://api.themoviedb.org/3/"
-    var baseImageUrl = ""
+    val baseImageUrl = "https://image.tmdb.org/t/p/"
 
     private val json = Json {
         prettyPrint = true

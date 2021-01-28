@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.paxet.evoapp.lesson8.R
-import com.paxet.evoapp.lesson8.data.tmdbapi.CastItem
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.CastItem
 
 class ActorsAdapter(
 ) : RecyclerView.Adapter<ActorViewHolder>() {

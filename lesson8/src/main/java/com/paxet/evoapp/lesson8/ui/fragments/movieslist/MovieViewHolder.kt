@@ -9,9 +9,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.paxet.evoapp.lesson8.R
-import com.paxet.evoapp.lesson8.data.GenresData
+import com.paxet.evoapp.lesson8.data.network.GenresData
 import com.paxet.evoapp.lesson8.data.network.NetworkModule
-import com.paxet.evoapp.lesson8.data.tmdbapi.MovieItemAPI
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.MovieItemAPI
 
 
 class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
