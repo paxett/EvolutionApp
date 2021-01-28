@@ -25,14 +25,14 @@ class MoviesListVM : BaseVM() {
     fun initMoviesList() {
         coroutineScope.launch(exceptionHandler) {
             val moviesNowPlaying = tmdbAPI.getNowPlaying(apiKey).results ?: listOf()
-            _moviesListLD.postValue(moviesNowPlaying as List<MovieItemAPI>?)
+            _moviesListLD.postValue(moviesNowPlaying)
         }
     }
 
     fun searchMoviesList(query : String) {
         coroutineScope.launch(exceptionHandler) {
             val moviesNowPlaying = tmdbAPI.searchMovies(query, apiKey).results ?: listOf()
-            _moviesListLD.postValue(moviesNowPlaying as List<MovieItemAPI>?)
+            _moviesListLD.postValue(moviesNowPlaying)
         }
     }
 

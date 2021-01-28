@@ -1,18 +1,18 @@
 package com.paxet.evoapp.lesson8.ui.fragments.moviedetails
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.paxet.evoapp.lesson8.data.network.NetworkModule.tmdbAPI
-import com.paxet.evoapp.lesson8.data.tmdbapi.MovieCreditsAPI
-import com.paxet.evoapp.lesson8.data.tmdbapi.MovieDetailsAPI
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.MovieCreditsAPI
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.MovieDetailsAPI
 import com.paxet.evoapp.lesson8.ui.fragments.BaseVM
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-class MovieDetailsVM : BaseVM() {
+class MovieDetailsVM(app: Application) : BaseVM(app) {
     private val _movieLD = MutableLiveData<Pair<MovieDetailsAPI, MovieCreditsAPI>>()
     val movieLD : LiveData<Pair<MovieDetailsAPI, MovieCreditsAPI>> get() = _movieLD
 
