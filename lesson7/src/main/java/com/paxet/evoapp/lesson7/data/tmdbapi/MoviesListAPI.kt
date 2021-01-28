@@ -16,7 +16,7 @@ data class MoviesListAPI(
 	val totalPages: Int? = null,
 
 	@SerialName("results")
-	val results: List<MovieItemAPI?>? = null,
+	val results: List<MovieItemAPI>? = null,
 
 	@SerialName("total_results")
 	val totalResults: Int? = null
