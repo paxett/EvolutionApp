@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.serialization'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -71,6 +72,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    //Room
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     //General resources
     implementation project(":mylibrary")
 }
