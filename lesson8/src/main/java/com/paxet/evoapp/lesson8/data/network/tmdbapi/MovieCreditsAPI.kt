@@ -1,5 +1,6 @@
-package com.paxet.evoapp.lesson8.data.tmdbapi
+package com.paxet.evoapp.lesson8.data.network.tmdbapi
 
+import com.paxet.evoapp.lesson8.data.db.Actors
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -7,7 +8,7 @@ import kotlinx.serialization.Serializable
 data class MovieCreditsAPI(
 
 	@SerialName("cast")
-	val cast: List<CastItem?>? = null,
+	val cast: List<CastItem?> = listOf(),
 
 	@SerialName("id")
 	val id: Int? = null,
@@ -92,3 +93,7 @@ data class CastItem(
 	@SerialName("order")
 	val order: Int? = null
 )
+
+fun CastItem.toActors(movieId: String) : Actors {
+	return Actors(id, name, movieId)
+}

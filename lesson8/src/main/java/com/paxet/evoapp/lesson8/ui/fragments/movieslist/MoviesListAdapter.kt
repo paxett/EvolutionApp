@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.paxet.evoapp.lesson8.R
-import com.paxet.evoapp.lesson8.data.tmdbapi.MovieItemAPI
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.MovieItemAPI
 
 class MoviesListAdapter(
     view : View

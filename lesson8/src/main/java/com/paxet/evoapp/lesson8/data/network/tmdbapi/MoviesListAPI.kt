@@ -1,5 +1,6 @@
-package com.paxet.evoapp.lesson8.data.tmdbapi
+package com.paxet.evoapp.lesson8.data.network.tmdbapi
 
+import com.paxet.evoapp.lesson8.data.db.Movies
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -16,14 +17,14 @@ data class MoviesListAPI(
 	val totalPages: Int? = null,
 
 	@SerialName("results")
-	val results: List<MovieItemAPI?>? = null,
+	val results: List<MovieItemAPI>? = null,
 
 	@SerialName("total_results")
 	val totalResults: Int? = null
 )
 
 @Serializable
-data class MovieItemAPI(
+data class MovieItemAPI (
 
 	@SerialName("overview")
 	val overview: String? = null,
@@ -77,3 +78,13 @@ data class DatesAPI(
 	@SerialName("minimum")
 	val minimum: String? = null
 )
+
+//Convert MovieItemAPI to DB Movies class
+fun MovieItemAPI.toMovies() : Movies {
+	return Movies(this.id,
+		this.title, this.genreIds?.joinToString(","),
+		this.voteCount,
+		this.adult,
+		this.voteAverage,
+		this.overview)
+}

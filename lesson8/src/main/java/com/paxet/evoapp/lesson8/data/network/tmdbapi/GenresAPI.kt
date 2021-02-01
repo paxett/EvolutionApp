@@ -1,5 +1,6 @@
-package com.paxet.evoapp.lesson8.data.tmdbapi
+package com.paxet.evoapp.lesson8.data.network.tmdbapi
 
+import com.paxet.evoapp.lesson8.data.db.Genres
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,3 +20,10 @@ data class GenresItem(
 	@SerialName("id")
 	val id: Int? = null
 )
+
+fun GenresItem.toGenres() : Genres {
+return Genres(
+	this.id,
+	this.name
+)
+}

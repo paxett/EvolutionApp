@@ -9,9 +9,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.paxet.evoapp.lesson8.R
-import com.paxet.evoapp.lesson8.data.GenresData
+import com.paxet.evoapp.lesson8.data.network.GenresData
 import com.paxet.evoapp.lesson8.data.network.NetworkModule
-import com.paxet.evoapp.lesson8.data.tmdbapi.MovieItemAPI
+import com.paxet.evoapp.lesson8.data.network.tmdbapi.MovieItemAPI
 
 
 class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -27,11 +27,14 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(movie: MovieItemAPI) {
+        if(NetworkModule.baseImageUrl.isNotEmpty()) {
+            //TODO: Glide cache or dummy image if baseImageUrl is empty
             Glide.with(view)
-                    .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
-                    .placeholder(R.drawable.bg_mask)
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
-                    .into(poster)
+                .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
+                .placeholder(R.drawable.bg_mask)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
+                .into(poster)
+        }
 
         title.text = movie.title
         GenresData.genresData?.genres

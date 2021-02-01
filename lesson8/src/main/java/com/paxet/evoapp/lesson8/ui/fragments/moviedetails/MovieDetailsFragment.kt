@@ -49,11 +49,13 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         val storyLine: TextView = view.findViewById(R.id.body)
 
         viewModel.movieLD.observe(viewLifecycleOwner, Observer { movie ->
-            movie.first.run {
-                Glide.with(view)
+            movie.first?.run {
+                if(NetworkModule.baseImageUrl.isNotEmpty()) {
+                    //TODO: Glide cache or dummy image if baseImageUrl is empty
+                    Glide.with(view)
                         .load("${NetworkModule.baseImageUrl}/w342/${backdropPath}")
                         .into(bw_poster)
-
+                }
                 val colorMatrix = ColorMatrix()
                 colorMatrix.setSaturation(0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
@@ -68,7 +70,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
             }
 
             movie.second.run {
-                actorsAdapter.actors = cast ?: listOf()
+                actorsAdapter.actors = this
             }
         })
     }
