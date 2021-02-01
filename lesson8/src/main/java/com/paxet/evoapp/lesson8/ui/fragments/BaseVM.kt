@@ -21,14 +21,12 @@ abstract class BaseVM(app: Application) : AndroidViewModel(app) {
         NetworkModule.tmdbAPI
     }
     val db by lazy {
-        AppDatabase.getDBInstance(getApplication())
+        AppDatabase.getDBInstance(app)
     }
 
     fun initConfiguration() {
         coroutineScope.launch(exceptionHandler) {
-            //TODO: there we habe a problem - baseImageUrl is empty after wifi off/on and phone rotation
-            //TODO: Hardcode baseImageUrl in NetworkModule for now
-            //NetworkModule.baseImageUrl = tmdbAPI.getAPIConfiguration(apiKey).images?.secureBaseUrl ?: ""
+            NetworkModule.baseImageUrl = tmdbAPI.getAPIConfiguration(apiKey).images?.secureBaseUrl ?: ""
         }
     }
 
@@ -37,6 +35,7 @@ abstract class BaseVM(app: Application) : AndroidViewModel(app) {
             GenresData.genresData = GenresAPI( db.genresDao.getAll().map { it.toGenresItem() } )
             val genresData = tmdbAPI.getGenres(apiKey)
             if (genresData.genres != null) {
+                //Store genres to DB cache
                 GenresData.genresData = genresData
                 db.genresDao.insertAll(genresData.genres.map { it?.toGenres()})
             }

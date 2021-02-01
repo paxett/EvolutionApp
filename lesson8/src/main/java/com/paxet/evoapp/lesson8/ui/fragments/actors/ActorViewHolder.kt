@@ -15,8 +15,11 @@ class ActorViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(actor : CastItem?) {
-        Glide.with(view)
-            .load("${NetworkModule.baseImageUrl}/w92/${actor?.profilePath}").into(avatar)
+        if(NetworkModule.baseImageUrl.isNotEmpty()) {
+            //TODO: Glide cache or dummy image if baseImageUrl is empty
+            Glide.with(view)
+                .load("${NetworkModule.baseImageUrl}/w92/${actor?.profilePath}").into(avatar)
+        }
 
         actor_name.text = actor?.name ?: ""
     }

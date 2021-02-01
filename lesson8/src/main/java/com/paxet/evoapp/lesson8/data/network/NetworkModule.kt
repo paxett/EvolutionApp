@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 
 object NetworkModule {
     private val baseMovieUrl = "https://api.themoviedb.org/3/"
-    val baseImageUrl = "https://image.tmdb.org/t/p/"
+    var baseImageUrl: String = ""
 
     private val json = Json {
         prettyPrint = true

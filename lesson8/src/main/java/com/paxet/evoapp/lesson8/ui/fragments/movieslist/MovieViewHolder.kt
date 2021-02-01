@@ -27,11 +27,14 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(movie: MovieItemAPI) {
+        if(NetworkModule.baseImageUrl.isNotEmpty()) {
+            //TODO: Glide cache or dummy image if baseImageUrl is empty
             Glide.with(view)
-                    .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
-                    .placeholder(R.drawable.bg_mask)
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
-                    .into(poster)
+                .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
+                .placeholder(R.drawable.bg_mask)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
+                .into(poster)
+        }
 
         title.text = movie.title
         GenresData.genresData?.genres
