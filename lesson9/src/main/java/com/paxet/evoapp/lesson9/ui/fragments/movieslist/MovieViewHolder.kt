@@ -6,6 +6,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.paxet.evoapp.lesson9.R
@@ -27,11 +28,12 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(movie: MovieItemAPI) {
-        if(NetworkModule.baseImageUrl.isNotEmpty()) {
+        if(!movie.posterPath.isNullOrEmpty()) {
             //TODO: Glide cache or dummy image if baseImageUrl is empty
             Glide.with(view)
                 .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
                 .placeholder(R.drawable.bg_mask)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))
                 .into(poster)
         }

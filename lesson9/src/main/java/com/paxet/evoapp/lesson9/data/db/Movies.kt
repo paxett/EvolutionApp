@@ -29,6 +29,9 @@ data class Movies(
     @ColumnInfo(name="overview")
     val overview: String?,
 
+    @ColumnInfo(name="poster_path")
+    val posterPath: String?
+
 )
 
 //Convert DB Movies class to MovieItemAPI
@@ -39,7 +42,7 @@ fun Movies.toMoviesApi() : MovieItemAPI {
         null,
         this.title,
         this.genres?.split(",")?.toList()?.map { it.toInt() },
-        null,
+        posterPath,
         null,
         null,
         null,

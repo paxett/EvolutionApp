@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.paxet.evoapp.lesson9.R
 import com.paxet.evoapp.lesson9.data.network.NetworkModule
 import com.paxet.evoapp.lesson9.ui.fragments.actors.ActorsAdapter
@@ -50,10 +51,10 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
         viewModel.movieLD.observe(viewLifecycleOwner, Observer { movie ->
             movie.first?.run {
-                if(NetworkModule.baseImageUrl.isNotEmpty()) {
-                    //TODO: Glide cache or dummy image if baseImageUrl is empty
+                if(!backdropPath.isNullOrEmpty()) {
                     Glide.with(view)
                         .load("${NetworkModule.baseImageUrl}/w342/${backdropPath}")
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(bw_poster)
                 }
                 val colorMatrix = ColorMatrix()

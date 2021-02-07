@@ -10,8 +10,12 @@ data class Actors (
     @PrimaryKey
     @ColumnInfo(name="id")
     val id: Int? = null,
+    @ColumnInfo(name="actor_name")
     val name: String?,
-    val movieId: String
+    @ColumnInfo(name="movie_id")
+    val movieId: String,
+    @ColumnInfo(name="profile_pPath")
+    val profilePath: String?
 )
 
 fun Actors.toCastItem() : CastItem {
@@ -23,7 +27,7 @@ fun Actors.toCastItem() : CastItem {
     null,
     null,
     name,
-    null,
+    profilePath,
     id,
     null,
     null

@@ -10,7 +10,7 @@ interface ActorsDao {
     @Query("SELECT * FROM actors")
     fun getAll(): List<Actors>
 
-    @Query("SELECT * FROM actors where movieId=:movieId")
+    @Query("SELECT * FROM actors where movie_id=:movieId")
     fun getActorsByMovieId(movieId: String): List<Actors>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

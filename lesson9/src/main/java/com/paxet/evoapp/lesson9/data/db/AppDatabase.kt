@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Movies::class, Actors::class, Genres::class], version = 4)
+@Database(entities = [Movies::class, Actors::class, Genres::class], version = 5)
 //TODO add TypeConverters
 
 abstract class AppDatabase : RoomDatabase() {
