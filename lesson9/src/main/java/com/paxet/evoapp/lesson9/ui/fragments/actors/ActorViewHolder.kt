@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.paxet.evoapp.lesson9.R
 import com.paxet.evoapp.lesson9.data.network.NetworkModule
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.CastItem
@@ -15,10 +16,11 @@ class ActorViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(actor : CastItem?) {
-        if(NetworkModule.baseImageUrl.isNotEmpty()) {
-            //TODO: Glide cache or dummy image if baseImageUrl is empty
+        if(!actor?.profilePath.isNullOrEmpty()) {
             Glide.with(view)
-                .load("${NetworkModule.baseImageUrl}/w92/${actor?.profilePath}").into(avatar)
+                .load("${NetworkModule.baseImageUrl}/w92/${actor?.profilePath}")
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(avatar)
         }
 
         actor_name.text = actor?.name ?: ""

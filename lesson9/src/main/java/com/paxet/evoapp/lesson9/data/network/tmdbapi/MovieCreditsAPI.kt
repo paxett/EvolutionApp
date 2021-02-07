@@ -95,5 +95,5 @@ data class CastItem(
 )
 
 fun CastItem.toActors(movieId: String) : Actors {
-	return Actors(id, name, movieId)
+	return Actors(id, name, movieId, profilePath)
 }

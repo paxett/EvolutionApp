@@ -3,23 +3,38 @@ package com.paxet.evoapp.lesson9.ui.fragments
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.work.*
+import com.paxet.evoapp.lesson9.data.CacheWorker
 import com.paxet.evoapp.lesson9.data.db.AppDatabase
 import com.paxet.evoapp.lesson9.data.db.toGenresItem
 import com.paxet.evoapp.lesson9.data.network.GenresData
 import com.paxet.evoapp.lesson9.data.network.NetworkModule
+import com.paxet.evoapp.lesson9.data.network.NetworkModule.tmdbAPI
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.GenresAPI
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.toGenres
 import kotlinx.coroutines.*
+import java.util.concurrent.TimeUnit
 
 abstract class BaseVM(app: Application) : AndroidViewModel(app) {
+    init {
+        val constraints = Constraints.Builder()
+            .setRequiresCharging(true)
+            .setRequiredNetworkType(NetworkType.UNMETERED)
+            .build()
+
+        val cacheWorkRequest = PeriodicWorkRequestBuilder<CacheWorker>(8, TimeUnit.HOURS)
+            .setConstraints(constraints)
+            .build()
+
+        val workManager = WorkManager.getInstance(app)
+        workManager.enqueueUniquePeriodicWork("DB cache updater", ExistingPeriodicWorkPolicy.KEEP, cacheWorkRequest)
+    }
+
     val coroutineScope = CoroutineScope(Job() + Dispatchers.IO)
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Log.e(TAG, "Coroutine exception, scope active:${throwable.localizedMessage}", throwable)
     }
 
-    val tmdbAPI by lazy {
-        NetworkModule.tmdbAPI
-    }
     val db by lazy {
         AppDatabase.getDBInstance(app)
     }

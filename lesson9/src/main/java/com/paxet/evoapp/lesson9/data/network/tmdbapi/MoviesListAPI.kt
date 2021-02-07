@@ -82,9 +82,11 @@ data class DatesAPI(
 //Convert MovieItemAPI to DB Movies class
 fun MovieItemAPI.toMovies() : Movies {
 	return Movies(this.id,
-		this.title, this.genreIds?.joinToString(","),
-		this.voteCount,
-		this.adult,
-		this.voteAverage,
-		this.overview)
+		title,
+		genreIds?.joinToString(","),
+		voteCount,
+		adult,
+		voteAverage,
+		overview,
+		posterPath)
 }

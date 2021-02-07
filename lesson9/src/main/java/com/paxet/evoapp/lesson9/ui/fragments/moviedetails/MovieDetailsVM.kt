@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.paxet.evoapp.lesson9.data.db.toCastItem
+import com.paxet.evoapp.lesson9.data.network.NetworkModule.tmdbAPI
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.CastItem
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.MovieDetailsAPI
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.toActors
