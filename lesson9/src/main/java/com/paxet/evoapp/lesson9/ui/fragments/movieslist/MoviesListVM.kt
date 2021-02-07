@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.paxet.evoapp.lesson9.data.db.toMoviesApi
+import com.paxet.evoapp.lesson9.data.network.NetworkModule.tmdbAPI
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.MovieItemAPI
 import com.paxet.evoapp.lesson9.data.network.tmdbapi.toMovies
 import com.paxet.evoapp.lesson9.ui.fragments.BaseVM
