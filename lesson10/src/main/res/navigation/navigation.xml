@@ -15,12 +15,16 @@
     <fragment
         android:id="@+id/movieDetails"
         android:name="com.paxet.evoapp.lesson10.ui.fragments.moviedetails.MovieDetailsFragment"
-        android:label="MovieDetails" >
+        android:label="MovieDetails">
         <action
             android:id="@+id/action_movieDetails_to_moviesList"
             app:destination="@id/moviesList" />
         <argument
             android:name="movieId"
             app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:action="ACTION_VIEW"
+            app:uri="https://paxet.evoapp.com/movie/{movieId}" />
     </fragment>
 </navigation>
