@@ -1,5 +1,6 @@
 package com.paxet.evoapp.lesson10.ui.fragments.actors
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,12 +17,12 @@ class ActorViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(actor : CastItem?) {
-        if(!actor?.profilePath.isNullOrEmpty()) {
-            Glide.with(view)
-                .load("${NetworkModule.baseImageUrl}/w92/${actor?.profilePath}")
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(avatar)
-        }
+        val baseImageUrl = NetworkModule.baseImageUrl
+        Log.e("#MovieDetails Glide#", "Get NetworkModule.baseImageUrl = ${baseImageUrl}")
+        Glide.with(view)
+            .load("${baseImageUrl}/w92/${actor?.profilePath}")
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(avatar)
 
         actor_name.text = actor?.name ?: ""
     }

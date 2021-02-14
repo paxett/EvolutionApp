@@ -41,9 +41,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
             }
 
         }
-        viewModel.initConfiguration()
-        viewModel.initGenres()
-        //Set search line from shared preferences
+
         searchLineView.addTextChangedListener(mTextWatcher)
         if (pref.getString("search_line", "") == "") {
             viewModel.initMoviesList()

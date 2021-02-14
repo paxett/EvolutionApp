@@ -26,6 +26,8 @@ class MoviesListVM(app: Application) : BaseVM(app) {
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
+
+                initConfiguration()
                 //Get genres from network or DB cache
                 initGenres()
 

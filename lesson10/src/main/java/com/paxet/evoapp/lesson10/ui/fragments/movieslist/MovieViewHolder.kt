@@ -1,5 +1,6 @@
 package com.paxet.evoapp.lesson10.ui.fragments.movieslist
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -28,10 +29,11 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val view = view
 
     fun bind(movie: MovieItemAPI) {
-        if(!movie.posterPath.isNullOrEmpty()) {
-            //TODO: Glide cache or dummy image if baseImageUrl is empty
+        val baseImageUrl = NetworkModule.baseImageUrl
+        Log.e("#MovieList Glide#", "Get NetworkModule.baseImageUrl = ${baseImageUrl}")
+        if(baseImageUrl.isNotEmpty()) {
             Glide.with(view)
-                .load("${NetworkModule.baseImageUrl}w154/${movie.posterPath}")
+                .load("${baseImageUrl}w154/${movie.posterPath}")
                 .placeholder(R.drawable.bg_mask)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(90)))

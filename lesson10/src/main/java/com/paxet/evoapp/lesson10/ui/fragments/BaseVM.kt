@@ -39,13 +39,17 @@ abstract class BaseVM(app: Application) : AndroidViewModel(app) {
         AppDatabase.getDBInstance(app)
     }
 
-    fun initConfiguration() {
+    suspend fun initConfiguration() {
         coroutineScope.launch(exceptionHandler) {
-            NetworkModule.baseImageUrl = tmdbAPI.getAPIConfiguration(apiKey).images?.secureBaseUrl ?: ""
+            val baseImageUrl = tmdbAPI.getAPIConfiguration(apiKey).images?.secureBaseUrl ?: ""
+            Log.e("#initConfiguration Glide#", "Get from API NetworkModule.baseImageUrl = ${baseImageUrl}")
+            if(baseImageUrl.isNotEmpty()) {
+                NetworkModule.baseImageUrl = baseImageUrl
+            }
         }
     }
 
-    fun initGenres() {
+    suspend fun initGenres() {
         coroutineScope.launch(exceptionHandler) {
             GenresData.genresData = GenresAPI( db.genresDao.getAll().map { it.toGenresItem() } )
             val genresData = tmdbAPI.getGenres(apiKey)
