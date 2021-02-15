@@ -10,10 +10,14 @@ import com.paxet.evoapp.lesson10.data.network.NetworkModule.tmdbAPI
 import com.paxet.evoapp.lesson10.data.network.tmdbapi.MovieItemAPI
 import com.paxet.evoapp.lesson10.data.network.tmdbapi.toMovies
 import com.paxet.evoapp.lesson10.ui.fragments.BaseVM
+import com.paxet.evoapp.lesson10.ui.notifications.NewMovieNotification
+import com.paxet.evoapp.lesson10.ui.notifications.Notification
 import kotlinx.coroutines.*
 import java.util.*
 
 class MoviesListVM(app: Application) : BaseVM(app) {
+
+    private val app: Application = app
 
     private val _moviesListLD = MutableLiveData<List<MovieItemAPI>>()
     val moviesListLD : LiveData<List<MovieItemAPI>> get() = _moviesListLD
@@ -23,6 +27,8 @@ class MoviesListVM(app: Application) : BaseVM(app) {
     }
 
     fun initMoviesList() {
+        Log.e(TAG, "#initMoviesList#")
+        val notification: Notification = NewMovieNotification(app)
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
@@ -38,8 +44,9 @@ class MoviesListVM(app: Application) : BaseVM(app) {
                 }
 
                 //Get movies from network
+                var remoteMovies: List<MovieItemAPI> = listOf()
                 try {
-                    val remoteMovies: List<MovieItemAPI> = tmdbAPI.getNowPlaying(apiKey).results ?: listOf()
+                    remoteMovies = tmdbAPI.getNowPlaying(apiKey).results ?: listOf()
                     if(remoteMovies.isNotEmpty()) {
                         _moviesListLD.postValue(remoteMovies)
                         //Store movies to DB cache
@@ -47,6 +54,15 @@ class MoviesListVM(app: Application) : BaseVM(app) {
                     }
                 } catch (e: Exception) {
                     print(e.message)
+                }
+                val bestNewMovie = remoteMovies.minus(localMovies).maxByOrNull { it -> it.voteAverage ?: 0.0 }
+                if (bestNewMovie != null) {
+                    notification.showNotification(bestNewMovie)
+                } else {
+                    //Dummy notification just for tests
+                    //TODO: remove this
+                    notification.showNotification(remoteMovies.get(0))
+                    Log.e(TAG, "Dummy notification just for tests")
                 }
             }
         }
@@ -68,8 +84,7 @@ class MoviesListVM(app: Application) : BaseVM(app) {
     }
 
     var timer = Timer()
-    val DELAY: Long = 1000L
-    fun initTimer(searchLine: String) {
+    fun initTimer(searchLine: String, delay: Long) {
         timer.cancel()
         timer = Timer()
         timer.schedule(object : TimerTask() {
@@ -80,7 +95,7 @@ class MoviesListVM(app: Application) : BaseVM(app) {
                     searchMoviesList(searchLine)
                 }
             }
-        }, DELAY)
+        }, delay)
     }
 
     companion object {

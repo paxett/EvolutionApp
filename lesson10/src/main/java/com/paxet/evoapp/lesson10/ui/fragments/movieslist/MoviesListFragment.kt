@@ -31,7 +31,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
             override fun afterTextChanged(s: Editable?) {
                 editor.putString("search_line", searchLineView.text.toString())
                 editor.apply()
-                viewModel.initTimer(pref.getString("search_line", "") ?: "")
+                viewModel.initTimer(pref.getString("search_line", "") ?: "", 1000)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -44,7 +44,7 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
 
         searchLineView.addTextChangedListener(mTextWatcher)
         if (pref.getString("search_line", "") == "") {
-            viewModel.initMoviesList()
+            viewModel.initTimer("", 10)
         }
     }
 
