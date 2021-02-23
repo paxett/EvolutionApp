@@ -27,6 +27,9 @@
                     android:pathPattern="/movie/.*" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name="com.paxet.evoapp.lesson10.ui.notifications.NotificationReceiver">
+        </receiver>
     </application>
 
 </manifest>

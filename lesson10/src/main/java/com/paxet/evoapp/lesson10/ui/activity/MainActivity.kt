@@ -1,14 +1,18 @@
 package com.paxet.evoapp.lesson10.ui.activity
 
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.paxet.evoapp.lesson10.R
+import com.paxet.evoapp.lesson10.ui.notifications.NotificationReceiver
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var notificationReceiver: NotificationReceiver
+
     override fun onCreate(savedInstanceState: Bundle?) {
         //Clear shared preferences on app start
         val pref: SharedPreferences = getSharedPreferences("searchLine", 0)
@@ -23,11 +27,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onNewIntent(intent: Intent?) {
-        Log.e("TAG", "#onNewIntent#")
         super.onNewIntent(intent)
         if (intent != null) {
             handleIntent(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        notificationReceiver = NotificationReceiver()
+        val intentFilter = IntentFilter().apply {
+            addAction(NotificationReceiver.ACTION_TOAST_LONG)
+            addAction(NotificationReceiver.ACTION_TOAST_SHORT)
+        }
+        registerReceiver(notificationReceiver, intentFilter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(notificationReceiver)
     }
 
     private fun handleIntent(intent: Intent) {
@@ -50,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                             R.id.action_movieDetails_self,
                             args
                         )
+                        else -> Log.e("handleIntent", destinationIdOfThisFragment.toString())
                     }
 
                 }

@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import com.paxet.evoapp.lesson10.R
 import com.paxet.evoapp.lesson10.data.network.tmdbapi.MovieItemAPI
@@ -37,7 +38,7 @@ class NewMovieNotification(private val context: Context) : Notification {
     }
 
     override fun showNotification(movie: MovieItemAPI) {
-        val pIntent = PendingIntent.getActivity(
+        val pIntent_showMovieDetails = PendingIntent.getActivity(
             context, 1,
             Intent(context, MainActivity::class.java,)
                 .setAction(Intent.ACTION_VIEW)
@@ -45,13 +46,29 @@ class NewMovieNotification(private val context: Context) : Notification {
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
+        val pIntent_addToCalendar = PendingIntent.getBroadcast(context, 2,
+        Intent(
+                context, NotificationReceiver::class.java)
+                .putExtra(NotificationReceiver.ARG_MESSAGE, "Add to calendar Intent")
+                .setAction(NotificationReceiver.ACTION_TOAST_LONG),
+                PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val action = NotificationCompat.Action.Builder(
+                IconCompat.createWithResource(context, R.drawable.ic_launcher_background),
+                "Add to calendar",
+                pIntent_addToCalendar
+        ).build()
+
         val notification = NotificationCompat.Builder(context, "channel_id")
             .setContentTitle(movie.title)
             .setContentText(movie.overview)
-            .setSmallIcon(R.drawable.ic_launcher_background)
             .setWhen(Instant.now().toEpochMilli())
-            .setContentIntent(pIntent)
+            .setContentIntent(pIntent_showMovieDetails)
             .setStyle(NotificationCompat.BigTextStyle())
+            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setAutoCancel(true)
+            .addAction(action)
             .build()
 
         notificationManager?.notify("movie", 1, notification)
